@@ -1,0 +1,33 @@
+.icon{
+    margin-right: 0px;
+}
+.tit{
+    margin-left: 0px;
+}
+.line {
+    display: block;
+    width: 90%;
+    border: 2px solid #5030E5;
+    height: 1px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.task-card{
+    background-color: #F5F5F5;
+    min-width: 350px;
+    border-radius: 16px;
+    padding: 20px 0;
+    cursor: move;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-card.dragging {
+    opacity: 0.5;
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
