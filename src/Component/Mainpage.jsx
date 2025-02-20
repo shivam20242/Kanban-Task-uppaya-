@@ -5,20 +5,91 @@ import profile from '../assets/MaskGroup.png'
 import TaskCard from './TaskCard'
 import CardModal from './CardModal'
 import { Plus } from 'lucide-react'
+import pic1 from '../assets/Ellipse12.png'
+import pic2 from '../assets/Ellipse13.png'
+import pic3 from '../assets/Ellipse14.png'
+import pic4 from '../assets/Ellipse15.png'
+import pic5 from '../assets/Ellipse20.png'
 
 const Mainpage = () => {
   const [columns, setColumns] = useState({
     todo: {
       title: "To Do",
-      items: []
+      items: [
+        {
+          id: "1",
+          title: "Brainstorming",
+          description: "Brainstorming brings team members' diverse experience into play.",
+          comments: 2,
+          files: 3
+        },
+        {
+          id: "2",
+          title: "Research",
+          description: "User research helps you understand user behaviors, needs, and motivations.",
+          comments: 1,
+          files: 2
+        },
+        {
+          id: "3",
+          title: "Wireframes",
+          description: "Low fidelity wireframes include the most basic content and visuals.",
+          comments: 4,
+          files: 1
+        }
+      ]
     },
     progress: {
       title: "On Progress",
-      items: []
+      items: [
+        {
+          id: "3",
+          title: "Wireframes",
+          description: "Low fidelity wireframes include the most basic content and visuals.",
+          comments: 4,
+          files: 1
+        },
+        {
+          id: "4",
+          title: "Design System",
+          description: "Create a consistent design system for the entire application.",
+          comments: 2,
+          files: 3
+        },
+        {
+          id: "5",
+          title: "User Flow",
+          description: "User flow is the path taken by a typical user on an app or website.",
+          comments: 3,
+          files: 2
+        }
+      ]
     },
     done: {
       title: "Done",
-      items: []
+      items: [
+        {
+          id: "5",
+          title: "User Flow",
+          description: "User flow is the path taken by a typical user on an app or website.",
+          comments: 3,
+          files: 2
+        },
+        {
+          id: "6",
+          title: "Prototype",
+          description: "Create a high-fidelity prototype for user testing and feedback.",
+          comments: 5,
+          files: 4
+        },
+        {
+          id: "7",
+          title: "User Flow",
+          description: "User flow is the path taken by a typical user on an app or website.",
+          comments: 3,
+          files: 2
+        }
+      ]
     }
   });
 
@@ -90,10 +161,10 @@ const Mainpage = () => {
               <span>Invite</span>
             </button>
             <div className='members'>
-              <img src={profile} alt="member" className='member-img'/>
-              <img src={profile} alt="member" className='member-img'/>
-              <img src={profile} alt="member" className='member-img'/>
-              <img src={profile} alt="member" className='member-img'/>
+              <img src={pic1} alt="member" className='member-img'/>
+              <img src={pic2} alt="member" className='member-img'/>
+              <img src={pic3} alt="member" className='member-img'/>
+              <img src={pic4} alt="member" className='member-img'/>
               <div className='more-members'>+2</div>
             </div>
           </div>

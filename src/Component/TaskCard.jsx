@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import '../styling/taskCard.css'
-import profile from '../assets/MaskGroup.png'
-import {Plus, MessageSquare, File} from 'lucide-react'
+import { MessageSquare, File } from 'lucide-react'
+import pic1 from '../assets/Ellipse12.png'
 
 const TaskCard = ({ title, description, id, index, comments = 0, files = 0 }) => {
   const handleDragStart = (e) => {
@@ -15,34 +15,30 @@ const TaskCard = ({ title, description, id, index, comments = 0, files = 0 }) =>
 
   return (
     <div 
-      className="task-card w-[400px] h-full my-3 rounded-lg"
+      className="task-card"
       draggable
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
       data-task-id={id}
     >
-      <div className="flex items-center">
-        <span className="icon border-none mx-6 border-slate-900 w-2 h-2 bg-blue-600 rounded-full"></span>
-        <h2 className="w-20 py-2 tit">{title}</h2>
-      </div>
-      <span className="line"></span>    
-      <div className="p-4 bg-white rounded-md w-[370px] mx-auto my-5">
-        <p className="text-s text-gray-500 mb-3">
-          {description}
-        </p>
-        <div className="flex justify-between items-center">
-          <div className="flex -space-x-2">
-            <img src={profile} alt="" className="w-6 h-6 rounded-full border-2 border-white"/>
+      <div className="priority-tag">Low</div>
+      
+      <h3 className="task-title">{title}</h3>
+      <p className="task-description">{description}</p>
+      
+      <div className="task-footer">
+        <div className="avatar-group">
+          <img src={pic1} alt="User avatar" className="avatar" />
+        </div>
+        
+        <div className="task-stats">
+          <div className="stat-item">
+            <MessageSquare size={16} />
+            <span>{comments} comments</span>
           </div>
-          <div className="flex items-center gap-2 text-xs text-gray-500">
-            <span className="flex items-center gap-1">
-              <MessageSquare size={12} />
-              {comments} comments
-            </span>
-            <span className="flex items-center gap-1">
-              <File size={12} />
-              {files} files
-            </span>
+          <div className="stat-item">
+            <File size={16} />
+            <span>{files} files</span>
           </div>
         </div>
       </div>

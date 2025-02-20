@@ -42,11 +42,30 @@ const SideBar = () => {
       <div>
         My Project <CirclePlus />
       </div>
-      <div>
-        <div>Mobile App</div>
-        <div>Webite Redesign</div>
-        <div>Design System</div>
-        <div>Wireframes</div>
+      <div className="flex flex-col space-y-2 px-4 py-2">
+        <button className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-left rounded-md hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-50">
+          <div className="flex items-center">
+            <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+            Mobile App
+          </div>
+          <span className="text-gray-400">...</span>
+        </button>
+        
+        <button className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-left rounded-md hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-50">
+          <div className="flex items-center">
+            <span className="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
+            Website Redesign
+          </div>
+          <span className="text-gray-400">...</span>
+        </button>
+        
+        <button className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-left rounded-md hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-50">
+          <div className="flex items-center">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+            Design System
+          </div>
+          <span className="text-gray-400">...</span>
+        </button>
       </div>
       <div className="w-70 h-60 my-10 bg-gray-100 rounded-lg p-4 text-center shadow-md">
         <div className="flex justify-center">
@@ -69,7 +88,7 @@ const SideBar = () => {
         </div>
         <h2 class="text-lg font-semibold mt-2">Thoughts Time</h2>
         <p className="text-gray-500 text-sm mt-1">
-          We don’t have any notice for you, till then you can share your
+          We don't have any notice for you, till then you can share your
           thoughts with your peers.
         </p>
         <button className="mt-4 bg-white border border-gray-300 text-black py-2 px-4 rounded-lg shadow-sm hover:bg-gray-200">
