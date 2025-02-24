@@ -2,15 +2,15 @@
   margin-left: 238.9px;
   position: absolute;
   height: 60px;
-  width: 100%;
+  width: calc(100vw - 23%);
   border-bottom: 1px solid #dbdbdb;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 40% 40% 30%;
 }
 .search {
   margin-top: 10px;
-  margin-left: 50px;
-  width: 417px;
+  margin-left: 10%;
+  width: 100%;
   height: 44px;
   background-color: gray;
   display: flex;
@@ -40,7 +40,7 @@
   display: flex;
   gap: 20px;
   position: relative;
-  margin-left: 500px;
+  margin-left:300px;
   top: 20px;
 }
 

@@ -16,7 +16,7 @@
     background-color: white;
     border-radius: 16px;
     padding: 20px;
-    cursor: move;
+    cursor: grab;
     transition: transform 0.2s, box-shadow 0.2s;
     border: 1px solid #E0E0E0;
     position: relative;
@@ -26,10 +26,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.task-card.dragging {
-    opacity: 0.5;
-    transform: scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+.task-card:active {
+    cursor: grabbing;
 }
 
 .priority-tag {
@@ -94,3 +92,52 @@
     gap: 4px;
 }
 
+.date-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.created-date {
+  text-align: left;
+}
+
+.due-date {
+  text-align: right;
+  font-size: small;
+}
+
+.column {
+  min-width: 350px;
+  background: #F5F5F5;
+  border-radius: 16px;
+  padding: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.column.drag-over {
+  background-color: #e8e8e8;
+  border: 2px dashed #5030E5;
+}
+
+.task-card.dragging {
+  opacity: 0.5;
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.cards-container {
+  min-height: 100px;
+  padding: 8px;
+  transition: background-color 0.2s;
+}
+
+.cards-container.drag-over {
+  background-color: rgba(80, 48, 229, 0.1);
+}
+
+.task-actions{
+ display: flex;
+  justify-content: end;
+}
