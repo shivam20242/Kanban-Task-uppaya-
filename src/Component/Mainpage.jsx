@@ -21,15 +21,19 @@ const Mainpage = () => {
   const [columns, setColumns] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("");
   const [selectedDate, setSelectedDate] = useState("today");
-
+  // Add loading state at the top with other state declarations
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Modify the useEffect fetch function
   useEffect(() => {
     const fetchTasks = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(
           "https://upaay-backend.onrender.com/tasks"
         );
         const tasksData = await response.json();
-
+  
         // Transform the data into the required column structure
         const transformedColumns = {
           todo: {
@@ -78,10 +82,12 @@ const Mainpage = () => {
               })),
           },
         };
-
+  
         setColumns(transformedColumns);
       } catch (error) {
         console.error("Error fetching tasks:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchTasks();
@@ -90,12 +96,10 @@ const Mainpage = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentColumn, setCurrentColumn] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
-
   const handleAddCard = (columnId) => {
     setCurrentColumn(columnId);
     setShowModal(true);
   };
-
   const handleCreateCard = async (title, description, dueDate) => {
     try {
       const response = await fetch(
@@ -119,13 +123,13 @@ const Mainpage = () => {
           }),
         }
       );
-
+  
       if (!response.ok) {
         throw new Error("Failed to create task");
       }
-
+  
       const data = await response.json();
-
+  
       // Add the new card to the current column
       setColumns((prev) => ({
         ...prev,
@@ -146,7 +150,7 @@ const Mainpage = () => {
           ],
         },
       }));
-
+  
       setShowModal(false);
     } catch (error) {
       console.error("Error creating task:", error);
@@ -162,11 +166,11 @@ const Mainpage = () => {
           method: "DELETE",
         }
       );
-
+  
       if (!response.ok) {
         throw new Error("Failed to delete task");
       }
-
+  
       setColumns((prev) => ({
         ...prev,
         [columnId]: {
@@ -178,20 +182,19 @@ const Mainpage = () => {
       console.error("Error deleting task:", error);
     }
   };
-
   // **Edit Task**
   const handleEditCard = (taskId, columnId) => {
     const column = Object.entries(columns).find(([id, col]) =>
       col.items.find((item) => item.id === taskId)
     );
-
+  
     if (!column) return;
-
+  
     const [foundColumnId, foundColumn] = column;
     const task = foundColumn.items.find((item) => item.id === taskId);
-
+  
     if (!task) return;
-
+  
     setEditingTask({
       ...task,
       columnId: foundColumnId,
@@ -199,20 +202,19 @@ const Mainpage = () => {
     setCurrentColumn(foundColumnId);
     setShowModal(true);
   };
-
   const handleDrop = (e, columnId) => {
     e.preventDefault();
     const cardData = JSON.parse(e.dataTransfer.getData("text/plain"));
     const sourceColumn = Object.keys(columns).find((key) =>
       columns[key].items.find((item) => item.id === cardData.id)
     );
-
+  
     if (sourceColumn === columnId) return;
-
+  
     const card = columns[sourceColumn].items.find(
       (item) => item.id === cardData.id
     );
-
+  
     setColumns((prev) => ({
       ...prev,
       [sourceColumn]: {
@@ -283,6 +285,8 @@ const Mainpage = () => {
     } catch (error) {
       console.error("Error fetching tasks:", error);
       return null;
+    } finally {
+      setIsLoading(false);
     }
   };
   // Update the filter handlers
